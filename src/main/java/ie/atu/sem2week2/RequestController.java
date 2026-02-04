@@ -25,4 +25,27 @@ public String hello()
         Person person = new Person("Oliwier", 21);
         return person;
     }
+    @GetMapping("/calculate/{num1}/{num2}/{operation}")
+    public int calculate(
+            @PathVariable Integer num1,
+            @PathVariable Integer num2,
+            @PathVariable String operation) {
+
+        switch (operation) {
+            case "add":
+                return num1 + num2;
+
+            case "subtract":
+                return num1 - num2;
+
+            case "multiply":
+                return num1 * num2;
+
+            case "divide":
+                return num1 / num2;
+
+            default:
+                throw new IllegalArgumentException("Invalid operation: " + operation);
+        }
+    }
 }
